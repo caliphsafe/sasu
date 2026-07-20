@@ -1,77 +1,116 @@
 (() => {
   const images = Array.isArray(window.GALLERY_IMAGES) ? window.GALLERY_IMAGES : [];
-  const gallery = document.querySelector('#gallery');
-  const heroStack = document.querySelector('#hero-photo-stack');
-  const aboutImage = document.querySelector('#about-image');
+  const grid = document.querySelector('#gallery-grid');
   const lightbox = document.querySelector('#lightbox');
   const lightboxImage = document.querySelector('#lightbox-image');
+  const lightboxCount = document.querySelector('#lightbox-count');
+  const lightboxTitle = document.querySelector('#lightbox-title');
   const closeButton = document.querySelector('.lightbox-close');
+  const previousButton = document.querySelector('.lightbox-prev');
+  const nextButton = document.querySelector('.lightbox-next');
+  const menuButton = document.querySelector('.menu-button');
+  const nav = document.querySelector('#primary-nav');
+  let currentIndex = 0;
+  const available = new Set();
 
-  const makeImage = (item, className = '') => {
+  images.forEach((item, index) => {
+    const button = document.createElement('button');
+    button.className = 'gallery-item';
+    button.type = 'button';
+    button.setAttribute('aria-label', `Open ${item.title}`);
+
+    const placeholder = document.createElement('span');
+    placeholder.className = 'gallery-placeholder';
+    placeholder.innerHTML = `<strong>${String(index + 1).padStart(2, '0')}</strong><span>Add project-${String(index + 1).padStart(2, '0')}.jpg</span>`;
+    button.appendChild(placeholder);
+
     const img = document.createElement('img');
     img.src = item.src;
     img.alt = item.alt;
     img.loading = 'lazy';
     img.decoding = 'async';
-    img.referrerPolicy = 'no-referrer';
-    if (className) img.className = className;
+    img.addEventListener('load', () => {
+      available.add(index);
+      button.classList.add('loaded');
+    });
     img.addEventListener('error', () => {
-      img.classList.add('image-unavailable');
-      img.removeAttribute('src');
+      img.remove();
+      button.disabled = true;
+      button.setAttribute('aria-label', `${item.title} image has not been added yet`);
     });
-    return img;
-  };
+    button.appendChild(img);
 
-  images.forEach((item, index) => {
-    const figure = document.createElement('figure');
-    figure.className = `gallery-item gallery-item-${index + 1}`;
-    figure.tabIndex = 0;
-    figure.setAttribute('role', 'button');
-    figure.setAttribute('aria-label', `Open project image ${index + 1}`);
-    figure.appendChild(makeImage(item));
-    const label = document.createElement('figcaption');
-    label.innerHTML = `<span>Project ${String(index + 1).padStart(2, '0')}</span><strong>View project</strong>`;
-    figure.appendChild(label);
-    const open = () => openLightbox(item);
-    figure.addEventListener('click', open);
-    figure.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); }
-    });
-    gallery.appendChild(figure);
+    const caption = document.createElement('span');
+    caption.className = 'gallery-caption';
+    caption.innerHTML = `<span>${item.title}</span><strong>Open gallery</strong>`;
+    button.appendChild(caption);
+
+    button.addEventListener('click', () => openLightbox(index));
+    grid.appendChild(button);
   });
 
-  images.slice(0, 3).forEach((item, index) => {
-    const card = document.createElement('div');
-    card.className = `stack-card stack-card-${index + 1}`;
-    card.appendChild(makeImage(item));
-    heroStack.appendChild(card);
-  });
+  function validIndexes() {
+    return [...available].sort((a, b) => a - b);
+  }
 
-  if (images[1]) aboutImage.appendChild(makeImage(images[1]));
-
-  function openLightbox(item) {
-    lightboxImage.src = item.src;
-    lightboxImage.alt = item.alt;
+  function openLightbox(index) {
+    if (!available.has(index)) return;
+    currentIndex = index;
+    renderLightbox();
     lightbox.hidden = false;
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
     closeButton.focus();
   }
 
+  function renderLightbox() {
+    const item = images[currentIndex];
+    const valid = validIndexes();
+    const position = valid.indexOf(currentIndex);
+    lightboxImage.src = item.src;
+    lightboxImage.alt = item.alt;
+    lightboxCount.textContent = `${position + 1} / ${valid.length}`;
+    lightboxTitle.textContent = item.title;
+    previousButton.disabled = valid.length < 2;
+    nextButton.disabled = valid.length < 2;
+  }
+
+  function move(direction) {
+    const valid = validIndexes();
+    if (valid.length < 2) return;
+    const position = valid.indexOf(currentIndex);
+    currentIndex = valid[(position + direction + valid.length) % valid.length];
+    renderLightbox();
+  }
+
   function closeLightbox() {
     lightbox.hidden = true;
     lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImage.removeAttribute('src');
+    lightboxImage.src = '';
     document.body.classList.remove('modal-open');
   }
 
   closeButton.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (event) => {
+  previousButton.addEventListener('click', () => move(-1));
+  nextButton.addEventListener('click', () => move(1));
+  lightbox.addEventListener('click', event => {
     if (event.target === lightbox) closeLightbox();
   });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+  document.addEventListener('keydown', event => {
+    if (lightbox.hidden) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') move(-1);
+    if (event.key === 'ArrowRight') move(1);
   });
+
+  menuButton.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+  });
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }));
 
   document.querySelector('#year').textContent = new Date().getFullYear();
 })();

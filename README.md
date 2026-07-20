@@ -1,27 +1,39 @@
-# Stars & Stripes Upholstery — Glass 43 Build
+# Stars & Stripes Upholstery — Clean Glass 43 Build
 
-## Upload to GitHub
-1. Open the website repository in GitHub.
+A complete one-page static website designed for GitHub and Vercel.
+
+## Gallery setup
+
+Open:
+
+`assets/gallery/`
+
+Add ten JPG images named:
+
+- `project-01.jpg`
+- `project-02.jpg`
+- `project-03.jpg`
+- `project-04.jpg`
+- `project-05.jpg`
+- `project-06.jpg`
+- `project-07.jpg`
+- `project-08.jpg`
+- `project-09.jpg`
+- `project-10.jpg`
+
+No HTML or JavaScript changes are required. Missing files show clean numbered gallery slots instead of broken images.
+
+## GitHub browser upload
+
+1. Open your GitHub repository.
 2. Choose **Add file → Upload files**.
-3. Upload the contents of this folder, not the ZIP itself.
+3. Upload the contents of this folder, preserving the `assets/gallery` folder.
 4. Commit the changes.
 5. Vercel will redeploy automatically when connected to the repository.
 
-## Logo
-The supplied 2048 × 862 logo is stored at `assets/logo.png`. CSS preserves its proportions and scales it for desktop, tablet and mobile.
+## Business details currently used
 
-## Facebook images
-The project does not contain downloaded Facebook photos. `gallery.js` uses public Facebook photo-page IDs and resolves their display image remotely at page load through Microlink. The images remain inside the website gallery and lightbox; clicking them does not send visitors to Facebook.
-
-Excluded photo IDs:
-- 499227952212404
-- 499227948879071
-
-Because Facebook controls the original pages and image delivery, remote images can stop loading if Facebook changes access rules or Microlink changes its public service. For permanent reliability, locally hosted copies or an official Facebook API token would eventually be better.
-
-## Main files
-- `index.html` — one-page website structure
-- `styles.css` — responsive Apple-glass visual system
-- `gallery.js` — Facebook-hosted photo references
-- `script.js` — gallery rendering, lightbox and interactions
-- `assets/logo.png` — business logo
+- Office: 508-999-2923
+- Cell: 774-301-0116
+- Email: Sandstripes37@gmail.com
+- Address: 55 Wamsutta Street, Door #37, New Bedford, MA 02740

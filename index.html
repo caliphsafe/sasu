@@ -3,122 +3,152 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f7fa">
-  <meta name="description" content="Stars & Stripes Upholstery in New Bedford, Massachusetts. Automotive, marine, motorcycle, commercial and residential upholstery.">
+  <meta name="theme-color" content="#f7f9fc">
+  <meta name="description" content="Stars & Stripes Upholstery in New Bedford, Massachusetts. Custom automotive, marine, motorcycle, furniture and commercial upholstery.">
   <title>Stars & Stripes Upholstery | New Bedford, MA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="ambient ambient-blue" aria-hidden="true"></div>
-  <div class="ambient ambient-red" aria-hidden="true"></div>
+  <div class="page-glow page-glow-blue" aria-hidden="true"></div>
+  <div class="page-glow page-glow-red" aria-hidden="true"></div>
 
   <header class="site-header" id="top">
-    <a class="logo-panel glass" href="#top" aria-label="Stars & Stripes Upholstery home">
-      <img src="assets/logo.png" alt="Stars & Stripes Upholstery">
+    <a class="wordmark" href="#top" aria-label="Stars & Stripes Upholstery home">
+      <span class="wordmark-stars">Stars &amp; Stripes</span>
+      <span class="wordmark-sub">Upholstery II</span>
     </a>
-    <nav class="floating-nav glass" aria-label="Primary navigation">
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Open menu</span>
+    </button>
+
+    <nav class="site-nav glass" id="primary-nav" aria-label="Primary navigation">
       <a href="#services">Services</a>
-      <a href="#work">Our Work</a>
-      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
       <a class="nav-call" href="tel:+15089992923">Call now</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero section-shell">
+    <section class="hero section-shell" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">New Bedford, Massachusetts</p>
-        <h1>Old surfaces.<br><span>New life.</span></h1>
-        <p class="hero-lead">Custom upholstery built around durability, comfort and a clean finish—from vehicle interiors and boat seating to furniture and commercial spaces.</p>
+        <h1 id="hero-title">Crafted for the<br><span>way you live.</span></h1>
+        <p class="hero-lead">Custom upholstery, restoration and repair for vehicles, boats, motorcycles, furniture and commercial spaces—finished with care and built for everyday use.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="tel:+15089992923">Request a free estimate</a>
-          <a class="button button-glass" href="#work">See recent work</a>
-        </div>
-        <div class="stats glass">
-          <div><strong>Free</strong><span>Estimates</span></div>
-          <div><strong>Commercial</strong><span>& Residential</span></div>
-          <div><strong>Wide</strong><span>Fabric Selection</span></div>
+          <a class="button button-secondary" href="#gallery">View our work</a>
         </div>
       </div>
 
-      <div class="hero-visual glass">
-        <div class="photo-stack" id="hero-photo-stack" aria-label="Recent Stars & Stripes Upholstery projects"></div>
-        <div class="hero-badge glass"><span>★</span> Hand-finished in New Bedford</div>
+      <aside class="hero-card glass" aria-label="Business highlights">
+        <div class="hero-card-topline"><span>Established craft</span><span class="status-dot"></span></div>
+        <p class="hero-card-kicker">Custom work, made personal.</p>
+        <div class="hero-metric">
+          <strong>Free</strong>
+          <span>project estimates</span>
+        </div>
+        <div class="hero-card-grid">
+          <div><small>Projects</small><strong>Residential</strong></div>
+          <div><small>Projects</small><strong>Commercial</strong></div>
+          <div><small>Materials</small><strong>Wide selection</strong></div>
+          <div><small>Service</small><strong>Local &amp; direct</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="trust-strip section-shell" aria-label="Specialties">
+      <div class="trust-pill glass">Automotive</div>
+      <div class="trust-pill glass">Marine</div>
+      <div class="trust-pill glass">Motorcycle</div>
+      <div class="trust-pill glass">Furniture</div>
+      <div class="trust-pill glass">Commercial</div>
+    </section>
+
+    <section id="services" class="section-shell section-block">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">What we do</p>
+          <h2>One shop.<br>Many surfaces.</h2>
+        </div>
+        <p>From a single seat repair to a complete interior refresh, each project is approached around fit, function, durability and finish.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card glass"><span>01</span><h3>Auto Interiors</h3><p>Custom auto tops, interior panels, seats and headliners.</p></article>
+        <article class="service-card glass"><span>02</span><h3>Motorcycle Seats</h3><p>Comfort-focused reshaping, repair and custom seat upholstery.</p></article>
+        <article class="service-card glass"><span>03</span><h3>Boat Interiors</h3><p>Marine seating and interior surfaces for demanding environments.</p></article>
+        <article class="service-card glass"><span>04</span><h3>Commercial Seating</h3><p>Restaurant, clinic and office seating restoration and replacement.</p></article>
+        <article class="service-card glass"><span>05</span><h3>Furniture Restoration</h3><p>Renew chairs, benches, cushions and upholstered furniture.</p></article>
+        <article class="service-card service-card-accent"><span>06</span><h3>Fabric Selection</h3><p>Explore a large selection of fabrics, vinyls, textures and colors.</p></article>
       </div>
     </section>
 
-    <section id="services" class="section-shell services-section">
-      <div class="section-intro">
-        <div><p class="eyebrow">Services</p><h2>Made to fit.<br>Made to last.</h2></div>
-        <p>Repair, restoration and custom upholstery for personal, commercial and specialty projects.</p>
-      </div>
-      <div class="service-grid">
-        <article class="service-card glass"><span>01</span><h3>Automotive</h3><p>Custom auto tops, interiors, headliners and seat restoration.</p></article>
-        <article class="service-card glass"><span>02</span><h3>Motorcycle</h3><p>Custom motorcycle seats designed for comfort, durability and style.</p></article>
-        <article class="service-card glass"><span>03</span><h3>Marine</h3><p>Boat interiors and seating made for high-use marine environments.</p></article>
-        <article class="service-card glass"><span>04</span><h3>Commercial</h3><p>Restaurant, clinic and office seating restoration and replacement.</p></article>
-        <article class="service-card glass"><span>05</span><h3>Furniture</h3><p>Restore chairs, benches, cushions and upholstered furniture.</p></article>
-        <article class="service-card glass"><span>06</span><h3>Fabric Selection</h3><p>Choose from a large range of colors, textures, vinyls and fabrics.</p></article>
-      </div>
-    </section>
-
-    <section id="work" class="section-shell work-section">
-      <div class="section-intro work-intro">
-        <div><p class="eyebrow">Recent Work</p><h2>Craftsmanship<br>you can see.</h2></div>
-        <p>Images are displayed directly inside this website from the business’s Facebook photo collection. Tap any project to open the native gallery viewer.</p>
-      </div>
-      <div id="gallery" class="gallery" aria-live="polite"></div>
-    </section>
-
-    <section id="about" class="section-shell about-section">
-      <div class="about-photo glass"><div id="about-image" class="remote-cover"></div></div>
-      <div class="about-copy glass">
-        <p class="eyebrow">The Stars & Stripes Difference</p>
-        <h2>Practical craft.<br>Personal service.</h2>
-        <p>Every project starts with understanding what needs to be repaired, restored or completely reimagined. From everyday wear to custom transformations, the focus stays on fit, function and a finish that feels right.</p>
-        <ul>
-          <li><span>01</span> Share photos and project details</li>
-          <li><span>02</span> Review material and fabric options</li>
-          <li><span>03</span> Approve a clear project estimate</li>
-          <li><span>04</span> Pick up your renewed piece</li>
-        </ul>
+    <section id="process" class="section-shell section-block process-section">
+      <div class="process-panel glass">
+        <div class="section-heading compact">
+          <div><p class="eyebrow">Simple process</p><h2>From worn<br>to renewed.</h2></div>
+          <p>A clear, direct process that keeps your project moving without unnecessary steps.</p>
+        </div>
+        <ol class="process-list">
+          <li><span>01</span><div><strong>Show us the project</strong><p>Call, text or email with a description and a few photos.</p></div></li>
+          <li><span>02</span><div><strong>Choose the direction</strong><p>Review repair options, material choices and the proposed finish.</p></div></li>
+          <li><span>03</span><div><strong>Approve the estimate</strong><p>Receive a straightforward estimate before work begins.</p></div></li>
+          <li><span>04</span><div><strong>Enjoy the result</strong><p>Pick up a renewed piece made to look right and perform well.</p></div></li>
+        </ol>
       </div>
     </section>
 
-    <section id="contact" class="section-shell contact-section">
-      <div class="contact-card glass">
+    <section id="gallery" class="section-shell section-block gallery-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Project gallery</p><h2>Details make<br>the difference.</h2></div>
+        <p>Add your ten project images to <strong>assets/gallery</strong>. The gallery and full-screen viewer update automatically using the numbered filenames included in the README.</p>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="contact" class="section-shell section-block contact-section">
+      <div class="contact-panel glass">
         <div class="contact-copy">
-          <p class="eyebrow">Free Estimates</p>
-          <h2>Let’s bring it<br>back to life.</h2>
-          <p>Call, text or email with a few photos and a description of what you need.</p>
-          <div class="contact-actions">
+          <p class="eyebrow">Free estimates</p>
+          <h2>Ready to bring it<br>back to life?</h2>
+          <p>Share a few photos, tell us what needs attention and we’ll help you understand the next step.</p>
+          <div class="hero-actions">
             <a class="button button-primary" href="tel:+15089992923">Call 508-999-2923</a>
-            <a class="button button-glass" href="mailto:Sandstripes37@gmail.com">Send an email</a>
+            <a class="button button-secondary" href="mailto:Sandstripes37@gmail.com">Email the shop</a>
           </div>
         </div>
-        <div class="contact-details">
+        <div class="contact-list">
           <a href="tel:+15089992923"><span>Office</span><strong>508-999-2923</strong></a>
           <a href="tel:+17743010116"><span>Cell</span><strong>774-301-0116</strong></a>
           <a href="mailto:Sandstripes37@gmail.com"><span>Email</span><strong>Sandstripes37@gmail.com</strong></a>
-          <a href="https://maps.google.com/?q=1+Wamsutta+Street+Door+37+New+Bedford+MA+02740" target="_blank" rel="noopener"><span>Address</span><strong>1 Wamsutta Street, Door #37<br>New Bedford, MA 02740</strong></a>
+          <a href="https://maps.google.com/?q=55+Wamsutta+Street+Door+37+New+Bedford+MA+02740" target="_blank" rel="noopener"><span>Visit</span><strong>55 Wamsutta Street, Door #37<br>New Bedford, MA 02740</strong></a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <img src="assets/logo.png" alt="Stars & Stripes Upholstery">
-    <p>© <span id="year"></span> Stars & Stripes Upholstery</p>
+    <div class="footer-wordmark"><strong>Stars &amp; Stripes</strong><span>Upholstery II</span></div>
+    <p>© <span id="year"></span> Stars &amp; Stripes Upholstery. Commercial &amp; residential.</p>
     <a href="#top">Back to top ↑</a>
   </footer>
 
-  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Project image viewer">
-    <button class="lightbox-close" type="button" aria-label="Close image viewer">×</button>
-    <div class="lightbox-frame glass"><img id="lightbox-image" alt="Expanded upholstery project"></div>
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Project gallery viewer">
+    <button class="lightbox-close" type="button" aria-label="Close gallery">×</button>
+    <button class="lightbox-arrow lightbox-prev" type="button" aria-label="Previous image">‹</button>
+    <div class="lightbox-content">
+      <img id="lightbox-image" src="" alt="">
+      <div class="lightbox-meta"><span id="lightbox-count"></span><strong id="lightbox-title"></strong></div>
+    </div>
+    <button class="lightbox-arrow lightbox-next" type="button" aria-label="Next image">›</button>
   </div>
 
   <script src="gallery.js"></script>
