@@ -1,0 +1,15 @@
+ADD GALLERY PHOTOS HERE
+
+Rename the approved Facebook gallery images exactly:
+project-01.jpg
+project-02.jpg
+project-03.jpg
+...
+project-12.jpg
+
+The website automatically loads every file that exists and ignores missing numbers.
+Use landscape or square JPG images when possible. Recommended minimum size: 1400 px wide.
+
+DO NOT ADD THE TWO EXCLUDED FACEBOOK PHOTOS:
+- Facebook photo ID 499227952212404
+- Facebook photo ID 499227948879071
