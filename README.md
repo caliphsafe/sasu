@@ -1,36 +1,27 @@
-# Stars & Stripes Upholstery — Modern 43 Build
+# Stars & Stripes Upholstery — Glass 43 Build
 
-A responsive one-page static site designed for GitHub + Vercel.
-
-## Upload
-1. Extract the ZIP.
-2. Upload all files and folders to the root of a GitHub repository.
-3. Import the repository into Vercel.
-4. Framework preset: Other. No build command is required.
+## Upload to GitHub
+1. Open the website repository in GitHub.
+2. Choose **Add file → Upload files**.
+3. Upload the contents of this folder, not the ZIP itself.
+4. Commit the changes.
+5. Vercel will redeploy automatically when connected to the repository.
 
 ## Logo
-Replace `assets/logo.png` with the final 2048 × 862 logo. Keep the filename the same. The design preserves its proportions on desktop and mobile.
+The supplied 2048 × 862 logo is stored at `assets/logo.png`. CSS preserves its proportions and scales it for desktop, tablet and mobile.
 
-## Gallery
-The gallery is native and local. It never links visitors to Facebook.
+## Facebook images
+The project does not contain downloaded Facebook photos. `gallery.js` uses public Facebook photo-page IDs and resolves their display image remotely at page load through Microlink. The images remain inside the website gallery and lightbox; clicking them does not send visitors to Facebook.
 
-1. Save approved project photos inside `assets/gallery/`.
-2. Open `gallery.js`.
-3. Add entries such as:
-
-```js
-window.GALLERY_IMAGES = [
-  { src: "assets/gallery/project-01.jpg", alt: "Restored automotive seat" },
-  { src: "assets/gallery/project-02.jpg", alt: "Custom boat interior" }
-];
-```
-
-Excluded Facebook photo IDs:
+Excluded photo IDs:
 - 499227952212404
 - 499227948879071
 
-## Contact information
-- Office: 508-999-2923
-- Cell: 774-301-0116
-- Email: Sandstripes37@gmail.com
-- Address used: 1 Wamsutta Street, Door #37, New Bedford, MA 02740
+Because Facebook controls the original pages and image delivery, remote images can stop loading if Facebook changes access rules or Microlink changes its public service. For permanent reliability, locally hosted copies or an official Facebook API token would eventually be better.
+
+## Main files
+- `index.html` — one-page website structure
+- `styles.css` — responsive Apple-glass visual system
+- `gallery.js` — Facebook-hosted photo references
+- `script.js` — gallery rendering, lightbox and interactions
+- `assets/logo.png` — business logo
