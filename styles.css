@@ -163,3 +163,61 @@ footer a { color:var(--blue); text-decoration:none; font-weight:850; }
   .lightbox-next { grid-column:2; grid-row:2; justify-self:end; }
   .lightbox-arrow { width:52px; height:52px; }
 }
+
+/* Focused logo and gallery refinements */
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  width: clamp(170px, 18vw, 255px);
+  min-width: 0;
+}
+.logo-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.gallery-empty {
+  margin-top: 24px;
+  padding: 34px;
+  border-radius: 28px;
+  text-align: center;
+}
+.gallery-empty strong {
+  display: block;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+.gallery-empty p {
+  margin: 0;
+  color: var(--muted);
+}
+.lightbox-content {
+  grid-template-rows: minmax(0,1fr) auto auto;
+}
+.lightbox-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 10px 10px;
+}
+.lightbox-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.34);
+  cursor: pointer;
+  transition: width .2s ease, background .2s ease, transform .2s ease;
+}
+.lightbox-dot:hover { transform: scale(1.2); }
+.lightbox-dot.active {
+  width: 24px;
+  background: #fff;
+}
+@media (max-width: 720px) {
+  .logo-mark { width: 165px; }
+}

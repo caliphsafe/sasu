@@ -8,6 +8,7 @@
   const closeButton = document.querySelector('.lightbox-close');
   const previousButton = document.querySelector('.lightbox-prev');
   const nextButton = document.querySelector('.lightbox-next');
+  const dotsContainer = document.querySelector('#lightbox-dots');
   const menuButton = document.querySelector('.menu-button');
   const nav = document.querySelector('#primary-nav');
   let currentIndex = 0;
@@ -17,12 +18,8 @@
     const button = document.createElement('button');
     button.className = 'gallery-item';
     button.type = 'button';
+    button.hidden = true;
     button.setAttribute('aria-label', `Open ${item.title}`);
-
-    const placeholder = document.createElement('span');
-    placeholder.className = 'gallery-placeholder';
-    placeholder.innerHTML = `<strong>${String(index + 1).padStart(2, '0')}</strong><span>Add project-${String(index + 1).padStart(2, '0')}.jpg</span>`;
-    button.appendChild(placeholder);
 
     const img = document.createElement('img');
     img.src = item.src;
@@ -31,23 +28,35 @@
     img.decoding = 'async';
     img.addEventListener('load', () => {
       available.add(index);
+      button.hidden = false;
       button.classList.add('loaded');
+      updateGalleryState();
     });
     img.addEventListener('error', () => {
-      img.remove();
-      button.disabled = true;
-      button.setAttribute('aria-label', `${item.title} image has not been added yet`);
+      button.remove();
+      updateGalleryState();
     });
     button.appendChild(img);
 
     const caption = document.createElement('span');
     caption.className = 'gallery-caption';
-    caption.innerHTML = `<span>${item.title}</span><strong>Open gallery</strong>`;
+    caption.innerHTML = `<span>${item.title}</span><strong>View project</strong>`;
     button.appendChild(caption);
 
     button.addEventListener('click', () => openLightbox(index));
     grid.appendChild(button);
   });
+
+  const emptyState = document.createElement('div');
+  emptyState.className = 'gallery-empty glass';
+  emptyState.innerHTML = '<strong>Project gallery</strong><p>Recent upholstery work will be featured here.</p>';
+  grid.after(emptyState);
+
+  function updateGalleryState() {
+    emptyState.hidden = available.size > 0;
+  }
+
+  updateGalleryState();
 
   function validIndexes() {
     return [...available].sort((a, b) => a - b);
@@ -73,6 +82,19 @@
     lightboxTitle.textContent = item.title;
     previousButton.disabled = valid.length < 2;
     nextButton.disabled = valid.length < 2;
+    dotsContainer.innerHTML = '';
+    valid.forEach((imageIndex, dotIndex) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'lightbox-dot';
+      dot.setAttribute('aria-label', `View image ${dotIndex + 1}`);
+      if (imageIndex === currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        currentIndex = imageIndex;
+        renderLightbox();
+      });
+      dotsContainer.appendChild(dot);
+    });
   }
 
   function move(direction) {
